@@ -27,6 +27,8 @@ namespace BinarySearchTree
 
             int height = binarySearch.Size(binarySearch.root);
             Console.WriteLine("Height of the Tree is: " + height);
+
+            binarySearch.Search(binarySearch.root, 63);
         }
     }
 }

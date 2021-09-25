@@ -113,5 +113,35 @@ namespace BinarySearchTree
             }
 
         }
+
+        /// <summary>
+        /// Search element in tree
+        /// </summary>
+        /// <param name="root"></param>
+        /// <param name="value"></param>
+        /// <returns></returns>
+        public bool Search(Node<Gtype> root, int value)
+        {
+            //loop start if root is not null
+            while (root != null)
+            {
+                //check value is present in tree or not 
+                if (root.key == value)
+                {
+                    Console.WriteLine("Value {0} is Present", value);
+                    return true;
+                }
+                else if (root.key > value)
+                {
+                    return Search(root.left, value);
+                }
+                else
+                {
+                    return Search(root.right, value);
+                }
+            }
+            Console.WriteLine("Value is not Present!");
+            return false;
+        }
     }
 }

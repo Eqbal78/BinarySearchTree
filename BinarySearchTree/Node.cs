@@ -6,12 +6,23 @@ namespace BinarySearchTree
 {
     class Node<Gtype>
     {
+        /// <summary>
+        /// Initialize key store value
+        /// </summary>
         public int key;
+
+        /// <summary>
+        /// Intialize left and righr tree 
+        /// </summary>
         public Node<Gtype> left, right;
 
-        public Node(int item)
+        /// <summary>
+        /// constructor
+        /// </summary>
+        /// <param name="value"></param>
+        public Node(int value)
         {
-            this.key = item;
+            this.key = value;
             this.left = null;
             this.right = null;
         }
