@@ -11,28 +11,39 @@ namespace BinarySearchTree
     class BinarySearchTree<Gtype>
     {
 
-        // Root of BST
+        /// <summary>
+        /// Root of BST
+        /// </summary>
         public Node<Gtype> root;
 
-        // Constructor
+        /// <summary>
+        /// Constructor
+        /// </summary>
         public BinarySearchTree()
         {
             this.root = null;
         }
 
-        // This method mainly calls insertRec()
+        /// <summary>
+        /// This method mainly calls insertRec()
+        /// </summary>
+        /// <param name="value">insert the value in tree</param>
         public void insert(int value)
         {
             root = insertRec(root, value);
         }
 
-        // A recursive function to insert
-        // a new key in BST
+
+        /// <summary>
+        /// A recursive function to insert
+        /// </summary>
+        /// <param name="root">Root Node</param>
+        /// <param name="value">Value in tree</param>
+        /// <returns></returns>
         public Node<Gtype> insertRec(Node<Gtype> root, int value)
         {
 
-            // If the tree is empty,
-            // return a new node
+            // If the tree is empty,return a new node
             if (root == null)
             {
                 root = new Node<Gtype>(value);
@@ -41,22 +52,30 @@ namespace BinarySearchTree
 
             // Otherwise, recur down the tree
             if (value < root.key)
+            {
                 root.left = insertRec(root.left, value);
+            }
             else if (value > root.key)
+            {
                 root.right = insertRec(root.right, value);
+            }
 
             // Return the (unchanged) node pointer
             return root;
         }
 
-        // This method mainly calls InorderRec()
+        /// <summary>
+        /// This method mainly calls InorderRec()
+        /// </summary>
         public void inorder()
         {
             inorderRec(root);
         }
 
-        // A utility function to
-        // do inorder traversal of BST
+        /// <summary>
+        /// do inorder traversal of BST
+        /// </summary>
+        /// <param name="root"></param>
         public void inorderRec(Node<Gtype> root)
         {
             if (root != null)
@@ -65,6 +84,34 @@ namespace BinarySearchTree
                 Console.WriteLine(root.key);
                 inorderRec(root.right);
             } 
+        }
+
+        /// <summary>
+        /// Calculate heiht of tree
+        /// </summary>
+        /// <param name="node"></param>
+        /// <returns></returns>
+        public int Size(Node<Gtype> node)
+        {
+            if (node == null)
+                return 0;
+            else
+            {
+                //compute the depth of each subtree 
+                int leftsize = Size(node.left);
+                int rightsize = Size(node.right);
+
+                // use the larger one 
+                if (leftsize > rightsize)
+                {
+                    return (leftsize + 1);
+                }
+                else
+                {
+                    return (rightsize + 1);
+                }
+            }
+
         }
     }
 }
